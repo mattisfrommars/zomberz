@@ -14,4 +14,11 @@ class Usermodel extends CI_Model {
             FROM users HAVING distance < 10 ORDER BY distance;
         ')->result_array();
     }
+
+    public function create($user) {
+        return $this->db->query('
+            INSERT INTO users (`latitude`, `longitude`, `name`, `phone`)
+            VALUES ("'.$user['lat'].'", "'.$user['long'].'", "'.$user['name'].'", "'.$user['phone'].'");
+        ');
+    }
 }

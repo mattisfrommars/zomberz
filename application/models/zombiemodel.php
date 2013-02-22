@@ -44,9 +44,22 @@ class Zombiemodel extends CI_Model {
     public function insert($zombie) {
         $lat = $zombie['lat'];
         $long = $zombie['lng'];
+        // $this->db->query('
+        // INSERT INTO `zombies` (`latitude`, `longitude`)
+        // VALUES ('.$lat.', '.$long.');
+        // ');
+        $this->load->model('Usermodel', '', TRUE);
+        echo '<pre>';
+        var_dump($this->Usermodel->get_within_ten($lat, $long));
+        die();
+    }
+
+    public function get_within_ten($lat, $long) {
         return $this->db->query('
-        INSERT INTO `zombies` (`latitude`, `longitude`)
-        VALUES ('.$lat.', '.$long.');
-        ');
+            SELECT latitude, longitude, SQRT(
+                POW(69.1 * (latitude - '.$lat.'), 2) +
+                POW(69.1 * ('.$long.' - longitude) * COS(latitude / 57.3), 2)) AS distance
+            FROM zombies HAVING distance < 10 ORDER BY distance;
+        ')->result_array();
     }
 }

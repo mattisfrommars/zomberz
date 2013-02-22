@@ -13,4 +13,11 @@ class Zombie extends CI_Controller {
         echo json_encode($this->Zombiemodel->get_all_zombies());
     }
 
+    public function nearest() {
+        $lat  = @$_GET['lat'];
+        $long = @$_GET['long'];
+        $this->load->model('Zombiemodel', '', TRUE);
+        echo json_encode($this->Zombiemodel->get_nearest($lat, $long));
+    }
+
 }

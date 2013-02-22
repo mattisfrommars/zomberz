@@ -1,9 +1,9 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 
-$config['pusher_api_key'] = '';
-$config['pusher_secret'] = '';
-$config['pusher_app_id'] = '';
+$config['pusher_api_key'] = '37924';
+$config['pusher_secret'] = '9c295af0ff39b81a3ad1';
+$config['pusher_app_id'] = '21de8fe714c59dc32719';
 
 
 /* End of file pusher.php */

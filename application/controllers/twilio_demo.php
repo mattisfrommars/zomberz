@@ -11,8 +11,8 @@ class twilio_demo extends CI_Controller {
 	{
 		$this->load->library('twilio');
 
-		$from = '0000000000';
-		$to = '0000000000';
+		$from = '440000000000';
+		$to = '447514509257';
 		$message = 'This is a test...';
 
 		$response = $this->twilio->sms($from, $to, $message);

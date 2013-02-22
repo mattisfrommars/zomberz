@@ -49,9 +49,22 @@ class Zombiemodel extends CI_Model {
         // VALUES ('.$lat.', '.$long.');
         // ');
         $this->load->model('Usermodel', '', TRUE);
-        echo '<pre>';
-        var_dump($this->Usermodel->get_within_ten($lat, $long));
-        die();
+        $users = $this->Usermodel->get_within_ten($lat, $long);
+        foreach ($users as $user) {
+            $this->load->library('twilio');
+            $message = 'HEY! '. strtoupper(htmlspecialchars($user['name'])) . ' RUNN!!!! THIS IS ZOMBIE COUNTRY!';
+
+            $from = '447514509257';
+            $to = $user['phone'];
+            
+            $response = $this->twilio->sms($from, $to, $message);
+            if ( $response->IsError ) {
+                echo 'Error: ' . $response->ErrorMessage;
+            }
+            else {
+                echo 'Sent message to ' . $to;
+            }
+        }
     }
 
     public function get_within_ten($lat, $long) {

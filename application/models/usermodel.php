@@ -8,10 +8,17 @@ class Usermodel extends CI_Model {
 
     public function get_within_ten($lat, $long) {
         return $this->db->query('
-            SELECT latitude, longitude, SQRT(
+            SELECT name, phone, latitude, longitude, SQRT(
                 POW(69.1 * (latitude - '.$lat.'), 2) +
                 POW(69.1 * ('.$long.' - longitude) * COS(latitude / 57.3), 2)) AS distance
             FROM users HAVING distance < 10 ORDER BY distance;
         ')->result_array();
+    }
+
+    public function create($user) {
+        return $this->db->query('
+            INSERT INTO users (`latitude`, `longitude`, `name`, `phone`)
+            VALUES ("'.$user['lat'].'", "'.$user['long'].'", "'.$user['name'].'", "'.$user['phone'].'");
+        ');
     }
 }

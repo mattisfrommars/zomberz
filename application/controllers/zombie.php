@@ -28,6 +28,12 @@ class Zombie extends CI_Controller {
             'lng' => @$_POST['lng']
         );
         $this->load->model('Zombiemodel', '', TRUE);
+		$this->load->library('pusher');
+		$this->pusher->trigger('zombies', 'newZombie', array(
+			'lat' => $zombie["lat"],
+			'lng' => $zombie["lng"]
+		));
+		
         return json_encode($this->Zombiemodel->insert($zombie));
     }
 

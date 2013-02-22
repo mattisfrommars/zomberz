@@ -1,7 +1,3 @@
-<?php
-	
-?>
-
 <!doctype html>
 <html>
 	<!DOCTYPE html>
@@ -28,16 +24,34 @@
 			google.maps.event.addDomListener(window, 'load', initialize);
 		</script>
 		<style>
-			html, body, #map_canvas {
+			html,body {
+				width: 100%;
+				height: 100%;
+			}
+			#map_canvas {
 				margin: 0;
 				padding: 0;
 				height: 100%;
+				width: 80%;
+				float: left;
+			}
+			
+			#panel {
+				height: 100%;
+				width: 20%;
+				float: left;
 			}
 		</style>
 	</head>
 	<body>
 
 		<div id="map_canvas"></div>
-
+		<div id="panel">
+			<form id="personalInfo">
+				<input name="name" id="piName" placeholder="Name" />
+				<input name="phone" id="piPhone" placeholder="Phone" />
+				<input type="submit" />
+			</form>
+		</div>
 	</body>
 </html>

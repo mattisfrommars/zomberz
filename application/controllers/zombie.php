@@ -16,8 +16,8 @@ class Zombie extends CI_Controller {
 	}
 
 	public function index() {
-		$lat = ($this->input->get('lat');
-		$long = ($this->input->get('long');
+		$lat = $this->input->get('lat');
+		$long = $this->input->get('long');
 		$this->load->model('Zombiemodel', '', TRUE);
 		echo json_encode($this->Zombiemodel->get_all_zombies($lat, $long));
 	}

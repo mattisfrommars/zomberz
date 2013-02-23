@@ -3,6 +3,7 @@
 	<!DOCTYPE html>
 	<head>
 		<title>Zombie Survival Tool</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 		<!-- pusher JS -->
@@ -102,6 +103,7 @@
 			}
 			#panel p {
 				padding: 0 20%;
+				color: white;
 			}
 			@media only screen and (max-width: 900px) {
 				#panel {

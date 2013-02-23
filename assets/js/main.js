@@ -1,3 +1,5 @@
+var isHussein = false;
+
 $(document).ready(function(){
 	var zombies = new Array();
 	var zombie = {
@@ -55,6 +57,7 @@ $(document).ready(function(){
 		return false;
 	});
 });
+//get zombies from db
 var zombieList = [];
 $.get('/index.php/zombie', function(r){
 	r = JSON.parse(r);
@@ -80,6 +83,7 @@ function init(){
 	var pusher = new Pusher('9c295af0ff39b81a3ad1');
 	var channel = pusher.subscribe('zombies');
 	
+	//add zombies as they get received
 	channel.bind('newZombie', function(data) {
 		console.log(data);
 		var jsonData = data;//JSON.parse(data);
@@ -103,21 +107,24 @@ function init(){
 	
 	//new zombie(id,lat,lng,timestamp);
 	});
-	
+
 	google.maps.event.addListener(map, 'click', function(event) {
-		var marker = new google.maps.Marker({
-			position: event.latLng,
-			title: "zombah!!",
-			icon: "/images/zombie.png"
-		});
-		
-		$.post("/index.php/zombie/create",
-			{
-				"lat": event.latLng.lat(),
-				"lng": event.latLng.lng()
-			}
-		);
-		
-		marker.setMap(map);
+		console.log(isHussein);
+		if(isHussein){
+			var marker = new google.maps.Marker({
+				position: event.latLng,
+				title: "zombah!!",
+				icon: "/images/zombie.png"
+			});
+
+			$.post("/index.php/zombie/create",
+				{
+					"lat": event.latLng.lat(),
+					"lng": event.latLng.lng()
+				}
+			);
+
+			marker.setMap(map);
+		}
 	});
 }

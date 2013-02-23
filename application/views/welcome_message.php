@@ -118,6 +118,18 @@
 					left: 10%;
 				}
 			}
+			@media only screen and (max-width: 600px) {
+				#panel {
+					height: 90%;
+					top: 5%;
+					width: 90%;
+					left: 5%;
+				}
+				#panel input[type=text] {
+					width: 90%;
+					margin: 20px 2.5%;
+				}
+			}
 		</style>
 	</head>
 	<body>

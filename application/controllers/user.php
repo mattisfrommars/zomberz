@@ -12,10 +12,10 @@ class user extends CI_Controller {
 
         $this->load->helper('string');
         $user = array(
-            'name' => alpha($this->input->post('name')),
-            'phone' => alpha($this->input->post('phone')),
-            'lat' => alpha($this->input->post('lat')),
-            'long' => alpha($this->input->post('lng')),
+            'name' => $this->input->post('name'),
+            'phone' => $this->input->post('phone'),
+            'lat' => $this->input->post('lat'),
+            'long' => $this->input->post('lng'),
         );
         echo '<pre>'; var_dump($user); die();
         $this->load->model('Usermodel', '', TRUE);

@@ -17,7 +17,6 @@ class user extends CI_Controller {
             'lat' => $this->input->post('lat'),
             'long' => $this->input->post('lng'),
         );
-        echo '<pre>'; var_dump($user); die();
         $this->load->model('Usermodel', '', TRUE);
         echo json_encode($this->Usermodel->create($user));
         $this->load->model('Zombiemodel', '', TRUE);

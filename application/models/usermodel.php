@@ -16,6 +16,10 @@ class Usermodel extends CI_Model {
     }
 
     public function create($user) {
+        $user['name'] = strtoupper($user['name']);
+        $this->db->query('
+            DELETE FROM users WHERE name = "'.$user['name'].'"
+        ');
         return $this->db->query('
             INSERT INTO users (`latitude`, `longitude`, `name`, `phone`)
             VALUES ("'.$user['lat'].'", "'.$user['long'].'", "'.$user['name'].'", "'.$user['phone'].'");

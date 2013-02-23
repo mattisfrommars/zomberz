@@ -44,11 +44,26 @@ $(document).ready(function(){
 				
 		}
 		
-		init()
-	
+		init();
+
+		$.get('/index.php/zombie', function(r){
+			r = JSON.parse(r);
+			for (var i in r) {
+				var myLatLng = new google.maps.LatLng(r[i].lat,r[i].lng);
+
+				var marker = new google.maps.Marker({
+					position: myLatLng,
+					title: "zombie"
+				});
+			}
+		});
+
+			
+		$('#panel').slideUp();
 		return false;
 	});
 });
+
 
 function init(){
 	Pusher.log = function(message) {

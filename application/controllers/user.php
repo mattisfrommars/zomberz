@@ -15,7 +15,7 @@ class user extends CI_Controller {
             'long' => @$_POST['lng']
         );
         $this->load->model('Usermodel', '', TRUE);
-        $this->Usermodel->create($user);
+        echo json_encode($this->Usermodel->create($user));
         $this->load->model('Zombiemodel', '', TRUE);
         $closeZombies = $this->Zombiemodel->get_within_ten($_POST['lat'], $_POST['lng']);
         if ($closeZombies) {

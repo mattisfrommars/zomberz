@@ -47,6 +47,12 @@
 				border: 5px solid black;
 				text-align: center;
 				font-family: Arial, sans-serif;
+
+
+				background-image: url(/images/massiveZombie.png);
+				background-position: bottom left;
+				background-repeat: no-repeat;
+				background-size: 330px auto;
 			}
 			#panel img {
 				width: 90%;
@@ -101,6 +107,7 @@
 				#panel {
 					height: 60%;
 					top: 20%;
+					background-size: 240px auto;
 				}
 			}
 			@media only screen and (max-width: 768px) {

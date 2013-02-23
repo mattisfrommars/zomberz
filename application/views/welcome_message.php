@@ -129,6 +129,7 @@
 					width: 90%;
 					margin: 20px 2.5%;
 				}
+				p { padding: 0 !important; }
 			}
 		</style>
 	</head>

@@ -106,7 +106,8 @@ function init(){
 	google.maps.event.addListener(map, 'click', function(event) {
 		var marker = new google.maps.Marker({
 			position: event.latLng,
-			title: "zombah!!"
+			title: "zombah!!",
+			icon: "/images/zombie.png"
 		});
 		
 		$.post("/index.php/zombie/create",

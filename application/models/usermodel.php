@@ -18,11 +18,11 @@ class Usermodel extends CI_Model {
     public function create($user) {
         $user['name'] = strtoupper($user['name']);
         $this->db->query('
-            DELETE FROM users WHERE phone = "'.$user['phone'].'"
+            DELETE FROM users WHERE phone = "'.$this->db->escape_str($user['phone']).'"
         ');
         return $this->db->query('
             INSERT INTO users (`latitude`, `longitude`, `name`, `phone`)
-            VALUES ("'.$user['lat'].'", "'.$user['long'].'", "'.$user['name'].'", "'.$user['phone'].'");
+            VALUES ("'.$this->db->escape_str($user['lat']).'", "'.$this->db->escape_str($user['long']).'", "'.$this->db->escape_str($user['name']).'", "'.$this->db->escape_str($user['phone']).'");
         ');
     }
 }

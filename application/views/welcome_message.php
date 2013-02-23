@@ -2,7 +2,7 @@
 <html>
 	<!DOCTYPE html>
 	<head>
-		<title>Pusher Test</title>
+		<title>Zombie Survival Tool</title>
 		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 		<!-- pusher JS -->

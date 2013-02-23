@@ -94,7 +94,8 @@ function init(){
 	
 		var marker = new google.maps.Marker({
 			position: latLng,
-			title: id+' '+timestamp
+			title: id+' '+timestamp,
+			icon: "/images/zombie.png"
 		});
 
 		// To add the marker to the map, call setMap();

@@ -9,23 +9,23 @@
 class Zombie extends CI_Controller {
 
 	public function within_ten() {
-		$lat = @$_POST['lat'];
-		$long = @$_POST['lng'];
+		$lat = alpha($this->input->post('lat'));
+		$long = alpha($this->input->post('lng'));
 		$this->load->model('Zombiemodel', '', TRUE);
 		return json_encode($this->Zombiemodel->get_within_ten($lat, $long));
 	}
 
 	public function index() {
-		$lat = @$_GET['lat'];
-		$long = @$_GET['long'];
+		$lat = alpha($this->input->get('lat'));
+		$long = alpha($this->input->get('long'));
 		$this->load->model('Zombiemodel', '', TRUE);
 		echo json_encode($this->Zombiemodel->get_all_zombies($lat, $long));
 	}
 
 	public function create() {
 		$zombie = array(
-			'lat' => @$_POST['lat'],
-			'lng' => @$_POST['lng']
+			'lat' => alpha($this->input->post('lat')),
+			'lng' => alpha($this->input->post('lng'))
 		);
 		$this->load->model('Zombiemodel', '', TRUE);
 

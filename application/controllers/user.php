@@ -7,20 +7,24 @@
  */
 
 class user extends CI_Controller {
+
     public function create() {
+
+        $this->load->helper('string');
         $user = array(
-            'name' => @$_POST['name'],
-            'phone' => @$_POST['phone'],
-            'lat' => @$_POST['lat'],
-            'long' => @$_POST['lng']
+            'name' => alpha($this->input->post('name')),
+            'phone' => alpha($this->input->post('phone')),
+            'lat' => alpha($this->input->post('lat')),
+            'long' => alpha($this->input->post('lng')),
         );
+        echo '<pre>'; var_dump($user); die();
         $this->load->model('Usermodel', '', TRUE);
         echo json_encode($this->Usermodel->create($user));
         $this->load->model('Zombiemodel', '', TRUE);
         $closeZombies = $this->Zombiemodel->get_within_ten($_POST['lat'], $_POST['lng']);
         if ($closeZombies) {
             $this->load->library('twilio');
-            $message = 'WATCH OUT '. strtoupper(htmlspecialchars($user['name'])) . '!!!! YOU JUST WALKED INTO ZOMBIE COUNTRY!';
+            $message = 'WATCH OUT '. strtoupper($user['name']) . '!!!! YOU JUST WALKED INTO ZOMBIE COUNTRY!';
 
             $from = '447514509257';
             $to = $user['phone'];

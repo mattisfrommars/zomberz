@@ -1,5 +1,7 @@
 <?php
-
+function alpha($str) {
+	return preg_replace('/[^a-zA-Z0-9\s]/', '', $str);
+}
 /*
  *---------------------------------------------------------------
  * APPLICATION ENVIRONMENT

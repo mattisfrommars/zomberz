@@ -46,24 +46,27 @@ $(document).ready(function(){
 		
 		init();
 
-		$.get('/index.php/zombie', function(r){
-			r = JSON.parse(r);
-			for (var i in r) {
-				var myLatLng = new google.maps.LatLng(r[i].lat,r[i].lng);
+		for (var i in zombieList) {
+			zombieList[i].setMap(map);
+		}
 
-				var marker = new google.maps.Marker({
-					position: myLatLng,
-					title: "zombie"
-				});
-			}
-		});
 
-			
 		$('#panel').slideUp();
 		return false;
 	});
 });
+var zombieList = [];
+$.get('/index.php/zombie', function(r){
+	r = JSON.parse(r);
+	for (var i in r) {
+		var myLatLng = new google.maps.LatLng(r[i].lat,r[i].lng);
 
+		zombieList.push(new google.maps.Marker({
+			position: myLatLng,
+			title: "zombie"
+		}));
+	}
+});
 
 function init(){
 	Pusher.log = function(message) {

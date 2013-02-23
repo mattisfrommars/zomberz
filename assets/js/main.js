@@ -63,7 +63,8 @@ $.get('/index.php/zombie', function(r){
 
 		zombieList.push(new google.maps.Marker({
 			position: myLatLng,
-			title: "zombie"
+			title: "zombie",
+			icon: "/images/zombie.png"
 		}));
 	}
 });
